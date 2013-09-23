@@ -30,15 +30,8 @@ input[type="password"] {
     width: calc(100% - 24px);
     color: #777;
     background: #eee;
-    border: 1px solid #fff;
-    outline: 1px solid #d8d8d8;
-    margin: 0 0 10px;
-}
-
-input[type="text"]:hover,
-input[type="password"]:hover {
     border: 1px solid #d8d8d8;
-    outline: 1px solid #fff;
+    margin: 0 0 10px;
 }
 
 input[type="submit"] {
