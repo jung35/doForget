@@ -1,0 +1,57 @@
+html {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    background: #eee;
+    color: #222;
+}
+
+h1 {
+    font-weight: 300;
+    margin: 0;
+    padding: 10px 0 10px 10px;
+    font-size: 32px;
+    border-bottom: 1px solid #ccc;
+}
+
+.copyright {
+    text-align: center;
+    margin: 20px;
+    color: #888;
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 10px;
+    font-size: 12px;
+    display: block;
+    width: -webkit-calc(100% - 24px);
+    width: -moz-calc(100% - 24px);
+    width: calc(100% - 24px);
+    color: #777;
+    background: #eee;
+    border: 1px solid #fff;
+    outline: 1px solid #d8d8d8;
+    margin: 0 0 10px;
+}
+
+input[type="text"]:hover,
+input[type="password"]:hover {
+    border: 1px solid #d8d8d8;
+    outline: 1px solid #fff;
+}
+
+input[type="submit"] {
+    background: #8acc51;
+    color: #fff;
+    font-weight: 600;
+    width: 100%;
+    border: 0;
+    margin: 0 0 0 -1px;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+input[type="submit"]:hover {
+    background: #81c844;
+}
