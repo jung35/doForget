@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>doForget - Login</title>
+        <title>doForget - Register</title>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
         <meta name="viewport" content="initial-scale=0.75, maximum-scale=0.75,user-scalable=0">
         <link rel="stylesheet" href="./css/normalize.css">
@@ -10,16 +10,18 @@
     </head>
     <body>
         <h1>doForget</h1>
-        <form action="./welcome.html" method="POST">
+        <form action="./thanks.html" method="POST">
             <div class="formDiv">
-                <h3>Login</h3>
+                <h3>Register</h3>
                 <input type="text" placeholder="E-Mail Address" id="email" name="email">
+                <input type="text" placeholder="Your Name" id="name" name="name">
                 <input type="password" placeholder="Password" id="password" name="password">
+                <input type="password" placeholder="Password Again" id="passwordAgain" name="passwordAgain">
                 <div class="input">
-                    <input type="submit" value="Login">
+                    <input type="submit" value="Register">
                 </div>
             </div>
-            <div><a href="#" class="formOption">Forgot password?</a><a href="#" class="formOption">Create New Account</a></div>
+            <div><a href="./login.html" class="formOption formOptionSelf">Sign In</a></div>
         </form>
         <div class="copyright">&copy; 2013 Jung Oh</div>
     </body>

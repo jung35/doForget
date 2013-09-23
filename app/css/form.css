@@ -20,14 +20,14 @@ h3 {
     color: #555;
 }
 
-.loginForm {
+.formDiv {
     padding: 0 20px 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #bbb;
     position: relative;
     z-index: 5;
 }
 
-.loginForm .input {
+.formDiv .input {
     padding: 0 0 10px;
 }
 
@@ -37,12 +37,16 @@ h3 {
     text-align: center;
     margin: -1px -1px 0 0px;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #bbb;
     color: #666;
 }
 
 .formOption:nth-child(odd) {
     width: 154px;
+}
+
+.formOptionSelf {
+    width: 328px !important;
 }
 
 .formOption:hover {

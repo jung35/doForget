@@ -20,6 +20,10 @@ h1 {
     color: #888;
 }
 
+.centerAlign {
+    text-align: center;
+}
+
 input[type="text"],
 input[type="password"] {
     padding: 10px;
@@ -30,7 +34,7 @@ input[type="password"] {
     width: calc(100% - 24px);
     color: #777;
     background: #eee;
-    border: 1px solid #d8d8d8;
+    border: 1px solid #ccc;
     margin: 0 0 10px;
 }
 
