@@ -23,7 +23,7 @@ body {
     display: inline-block;
 }
 
-li[class*="urgency"] {
+ul[class*="urgency"] .timer  {
     padding: 13px 0 0;
     width: 100px;
     vertical-align: middle;
@@ -34,13 +34,13 @@ li[class*="urgency"] {
     color: #fff;
 }
 
-.urgency-low {background: #43ec7a;border:1px solid #14c64e;}
-.doForgetTodo:hover .urgency-low {background: #16d554;}
+.urgency-low .timer {background: #43ec7a;border:1px solid #14c64e;}
+.urgency-low:hover .timer {background: #16d554;}
 
-.urgency-med {background: #ffc266;border:1px solid #ffad33;}
-.doForgetTodo:hover .urgency-med {background: #ffb444;}
+.urgency-med .timer {background: #ffc266;border:1px solid #ffad33;}
+.urgency-med:hover .timer {background: #ffb444;}
 
-.urgency-high {
+.urgency-high .timer {
     background: #fc816c;
     border:1px solid #fb563a;
 
@@ -78,7 +78,9 @@ li[class*="urgency"] {
 
 .doForgetTodo:hover .message {color: #333;}
 
-li[class*="done"]:before {
+ul[class*="done"] {opacity: .4;}
+ul[class*="done"]:hover .message {color: #555;}
+ul[class*="done"] .timer:before {
     content: "X";
     font-size: 110px;
     position: absolute;
@@ -86,9 +88,9 @@ li[class*="done"]:before {
     left: 22px;
     font-weight: 300;
 }
-.urgency-low-done {background: #43ec7a;border:1px solid #14c64e;}
-.urgency-low-done:before {color: #14c64e;}
-.urgency-med-done {background: #ffc266;border:1px solid #ffad33;}
-.urgency-med-done:before {color: #ffad33;}
-.urgency-high-done {background: #fc816c;border:1px solid #fb563a;}
-.urgency-high-done:before {color: #fb563a;}
+.urgency-low-done .timer {background: #43ec7a;border:1px solid #14c64e;}
+.urgency-low-done .timer:before {color: #14c64e;}
+.urgency-med-done .timer {background: #ffc266;border:1px solid #ffad33;}
+.urgency-med-done .timer:before {color: #ffad33;}
+.urgency-high-done .timer {background: #fc816c;border:1px solid #fb563a;}
+.urgency-high-done .timer:before {color: #fb563a;}

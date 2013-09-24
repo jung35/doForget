@@ -1,7 +1,7 @@
 var objTime = {};
 
 $(function() {
-    var div = $('.urgency-low, .urgency-med, .urgency-high');
+    var div = $('.urgency-low .timer, .urgency-med .timer, .urgency-high .timer');
 
     $.each(div, function(k, v) {
         var times = $(v).find('div'),
