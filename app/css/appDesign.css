@@ -1,13 +1,19 @@
+body {
+    text-align: center;
+}
+
 .doForgetList {
-    list-style: none;
-    width: 500px;
-    margin: 20px auto 0;
+    text-align: left;
+    margin: 20px 0 0;
     padding: 0;
+    display: inline;
 }
 
 .doForgetTodo {
+    display: inline-block;
     cursor: pointer;
     margin: 20px 0 0;
+    width: 500px;
     padding: 0;
     list-style: none;
     position: relative;
