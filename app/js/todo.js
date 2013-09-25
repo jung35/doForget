@@ -43,18 +43,18 @@ function newTodo(form) {
         +'<li class="message"><h4>'+title+'</h4><p>'+extra+'</p></li></ul>'
     );
 
-    var newObj = JSON.parse(localStorage['todo']);
-    newObj["list"+listSize] = {
-        time: +new Date(),
-        urgency: urgency,
-        title: title,
-        extra: extra,
-        listSize: listSize
+    if(localExists) {
+        var newObj = JSON.parse(localStorage['todo']);
+        newObj["list"+listSize] = {
+            time: +new Date(),
+            urgency: urgency,
+            title: title,
+            extra: extra,
+            listSize: listSize
+        }
+
+        localStorage.setItem('todo',JSON.stringify(newObj));
     }
-
-    localStorage.setItem('todo',JSON.stringify(newObj));
-
-    console.log(localStorage['todo']);
 
     objTime["list"+listSize] = {
         day: 0,
@@ -68,6 +68,12 @@ function newTodo(form) {
 $('.doForgetList').on('click', '.doForgetTodo', function() {
     var listPos = $(this).offset();
 
+    if($(this).is('.urgency-low-done, .urgency-med-done, .urgency-high-done'))  {
+        $('.icon-checkmark').attr('class','icon-undo');
+    }
+
+    $('.todoEdit').attr("data-which",$(this).attr('id'));
+
     $('.todoEditBg').fadeIn('slow').find('.todoEdit').css({
         top: listPos.top,
         left: listPos.left
@@ -75,9 +81,44 @@ $('.doForgetList').on('click', '.doForgetTodo', function() {
 });
 
 $('.todoEditBg').on('click', function(evt) {
-    if($(event.target).is('.todoEdit')) {
-
-    } else {
-        $(this).fadeOut('fast');
+    var targ = $(evt.target),
+        which =  $('.todoEdit').attr('data-which'),
+        thisElement = $('#'+which);
+    if(targ.is('.todoEdit li')) {
+        if(targ.is('.icon-checkmark')) {
+            thisElement.attr('class', 'doForgetTodo '+thisElement.attr('class').split(" ")[1]+'-done');
+            if(localExists) {
+                var todos = JSON.parse(localStorage['todo']);
+                if(todos[which] != undefined) {
+                    todos[which]['disabled'] = +new Date();
+                    localStorage.setItem('todo', JSON.stringify(todos));
+                    delete objTime[which];
+                }
+            }
+        } else if(targ.is('.icon-undo')) {
+            var newClass = thisElement.attr('class').split(" ")[1].split('-');
+            thisElement.attr('class', 'doForgetTodo '+newClass[0]+'-'+newClass[1]);
+            if(localExists) {
+                var todos = JSON.parse(localStorage['todo']);
+                if(todos[which] != undefined) {
+                    delete todos[which]['disabled'];
+                    localStorage.setItem('todo', JSON.stringify(todos));
+                    objTime[which] = getTimePass(+new Date() - todos[which]['time']);
+                }
+            }
+        } else if(targ.is('.icon-x')) {
+            thisElement.remove();
+            if(localExists) {
+                var todos = JSON.parse(localStorage['todo']);
+                if(todos[which] != undefined) {
+                    delete todos[which];
+                    localStorage.setItem('todo', JSON.stringify(todos));
+                }
+            }
+        }
     }
+
+    $(this).fadeOut('fast', function() {
+        $('.icon-undo').attr('class','icon-checkmark');
+    });
 });

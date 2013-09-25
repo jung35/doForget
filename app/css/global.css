@@ -4,6 +4,11 @@ html {
     font-size: 13px;
     background: #fafafa;
     color: #222;
+    height: 100%;
+}
+
+body {
+    height: 100%;
 }
 
 h1 {

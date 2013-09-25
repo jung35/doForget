@@ -1,6 +1,5 @@
 body {
     text-align: center;
-    height: 100%;
     position: relative;
 }
 
@@ -202,6 +201,10 @@ input[type="radio"]:checked + label {
 
 .todoEdit .icon-checkmark:hover {
     color: #43ec7a;
+}
+
+.todoEdit .icon-undo:hover {
+    color: #ffc266;
 }
 
 .todoEdit .icon-list:hover {
