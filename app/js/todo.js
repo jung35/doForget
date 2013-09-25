@@ -66,4 +66,18 @@ function newTodo(form) {
 }
 
 $('.doForgetList').on('click', '.doForgetTodo', function() {
+    var listPos = $(this).offset();
+
+    $('.todoEditBg').fadeIn('slow').find('.todoEdit').css({
+        top: listPos.top,
+        left: listPos.left
+    });
+});
+
+$('.todoEditBg').on('click', function(evt) {
+    if($(event.target).is('.todoEdit')) {
+
+    } else {
+        $(this).fadeOut('fast');
+    }
 });
