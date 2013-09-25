@@ -9,7 +9,7 @@ $('.newTodo').on('click', function() {
 });
 
 function newTodo(form) {
-    var urgencyRadio = $('.newTodoInputRadio input[type="radio"]:checked').val(),
+    var urgencyRadio = parseInt($('.newTodoInputRadio input[type="radio"]:checked').val()),
         title = form.title.value,
         extra = form.todoInputExtra.value,
         listSize = $('.doForgetList ul').length + 1,
