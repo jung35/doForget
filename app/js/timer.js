@@ -1,8 +1,7 @@
-var object = {},
-    time = +new Date(),
+var time = +new Date(),
     objTime = {};
 if(localStorage['todo'] == undefined) {
-    localStorage.setItem('todo', JSON.stringify(object));
+    localStorage.setItem('todo', JSON.stringify({}));
 } else {
     var todos = JSON.parse(localStorage['todo']);
     $.each(todos, function(k, v) {
@@ -13,8 +12,6 @@ if(localStorage['todo'] == undefined) {
         doTime['hour'] = Math.floor(timepassed / (60*60*1000)) - (doTime['day']*24);
         doTime['minute'] = Math.floor(timepassed / (60*1000)) - ((doTime['day']*24*60)+(doTime['hour']*60));
         doTime['second'] = Math.floor(timepassed / 1000) - ((doTime['day']*24*60*60)+(doTime['hour']*60*60)+(doTime['minute']*60));
-
-        console.log(doTime);
 
         objTime[k] = {
             day: doTime['day'],
