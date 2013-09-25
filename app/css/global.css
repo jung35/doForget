@@ -2,7 +2,7 @@ html {
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     font-size: 13px;
-    background: #efefef;
+    background: #fafafa;
     color: #222;
 }
 
@@ -34,7 +34,7 @@ input[type="password"] {
     width: -moz-calc(100% - 24px);
     width: calc(100% - 24px);
     color: #777;
-    background: #f3f3f3;
+    background: #f7f7f7;
     border: 1px solid #ccc;
     margin: 0 0 10px;
 }
