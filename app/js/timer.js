@@ -22,7 +22,6 @@ function startTimer() {
     $.each(objTime, function(k,v) {
         var newTime = v,
             div = $($("#"+k).find('li')[0]).find('div');
-        console.log(newTime);
         if(v['second'] + 1 >= 60) {
             newTime['second'] = 0;
             if(newTime['minute'] + 1 >= 60) {
