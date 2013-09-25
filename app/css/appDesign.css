@@ -4,7 +4,7 @@ body {
 
 .doForgetList {
     text-align: left;
-    margin: 20px auto 0;
+    margin: 0 auto;
     padding: 0;
     display: inline-block;
     width: 400px;
@@ -84,10 +84,17 @@ ul[class*="urgency"]:nth-child(even) .timer {
     border-bottom: 1px solid #aaa;
     margin: 5px 0;
     font-size: 14px;
+    max-width: 285px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .message p {
     margin: 0;
+    max-width: 285px;
+    line-height: 150%;
+    font-size: 13px;
 }
 
 .doForgetTodo:hover .message {color: #333;}
@@ -101,11 +108,12 @@ ul[class*="done"] .timer:before {
     top: -28px;
     left: 22px;
     font-weight: 300;
+    width: 0;
 }
 
 ul[class*="done"]:nth-child(even) .timer:before {
     top: -28px;
-    right: -270px;
+    left: 320px;
 }
 
 .urgency-low-done .timer {background: #43ec7a;border:1px solid #14c64e;}
@@ -114,3 +122,42 @@ ul[class*="done"]:nth-child(even) .timer:before {
 .urgency-med-done .timer:before {color: #ffad33;}
 .urgency-high-done .timer {background: #fc816c;border:1px solid #fb563a;}
 .urgency-high-done .timer:before {color: #fb563a;}
+
+.newTodo {
+    cursor: pointer;
+}
+
+.newTodoInput {
+    display: none;
+    width: 400px;
+    margin: 10px auto 50px;
+}
+
+.newTodoInputRadio {
+    margin: 0 0 10px;
+}
+
+input[type="radio"] {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+label[for*="radioUrgency"] {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    border-radius: 32px;
+    vertical-align: middle;
+    margin: 0 0 0 10px;
+    cursor: pointer;
+    opacity: .3;
+}
+
+label[for="radioUrgencyLow"] {background:#43ec7a;}
+label[for="radioUrgencyMed"] {background:#ffc266;}
+label[for="radioUrgencyHigh"] {background:#fc816c;}
+
+input[type="radio"]:checked + label {
+    opacity: 1;
+}

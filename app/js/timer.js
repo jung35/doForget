@@ -1,4 +1,35 @@
-var objTime = {};
+var object = {},
+    time = +new Date(),
+    objTime = {};
+if(localStorage['todo'] == undefined) {
+    localStorage.setItem('todo', JSON.stringify(object));
+} else {
+    var todos = JSON.parse(localStorage['todo']);
+    $.each(todos, function(k, v) {
+        var timepassed = time - v['time'];
+
+        doTime = {};
+        doTime['day'] = Math.floor(timepassed / (24*60*60*1000));
+        doTime['hour'] = Math.floor(timepassed / (60*60*1000)) - (doTime['day']*24);
+        doTime['minute'] = Math.floor(timepassed / (60*1000)) - ((doTime['day']*24*60)+(doTime['hour']*60));
+        doTime['second'] = Math.floor(timepassed / 1000) - ((doTime['day']*24*60*60)+(doTime['hour']*60*60)+(doTime['minute']*60));
+
+        console.log(doTime);
+
+        objTime[k] = {
+            day: doTime['day'],
+            hour: doTime['hour'],
+            minute: doTime['minute'],
+            second: doTime['second']
+        }
+
+        $('.doForgetList').prepend(
+            '<ul class="doForgetTodo urgency-'+v['urgency']+'" id="'+k+'">'
+            +'<li class="timer"><div>'+objTime[k]['day']+' Day</div><div>'+objTime[k]['hour']+' Hour</div><div>'+objTime[k]['minute']+' Min</div><div>'+objTime[k]['second']+' Sec</div></li>'
+            +'<li class="message"><h4>'+v['title']+'</h4><p>'+v['extra']+'</p></li></ul>'
+        );
+    });
+}
 
 $(function() {
     var div = $('.urgency-low .timer, .urgency-med .timer, .urgency-high .timer');
