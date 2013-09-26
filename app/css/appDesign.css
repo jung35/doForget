@@ -136,7 +136,7 @@ ul[class*="done"]:nth-child(even) .timer:before {
     margin: 10px auto 50px;
 }
 
-.newTodoInputRadio {
+.todoInputRadio {
     margin: 0 0 10px;
 }
 
@@ -146,7 +146,7 @@ input[type="radio"] {
     height: 0;
 }
 
-label[for*="radioUrgency"] {
+label[for*="adioUrgency"] {
     display: inline-block;
     width: 32px;
     height: 32px;
@@ -157,9 +157,9 @@ label[for*="radioUrgency"] {
     opacity: .3;
 }
 
-label[for="radioUrgencyLow"] {background:#43ec7a;}
-label[for="radioUrgencyMed"] {background:#ffc266;}
-label[for="radioUrgencyHigh"] {background:#fc816c;}
+label[for*="adioUrgencyLow"] {background:#43ec7a;}
+label[for*="adioUrgencyMed"] {background:#ffc266;}
+label[for*="adioUrgencyHigh"] {background:#fc816c;}
 
 input[type="radio"]:checked + label {
     opacity: 1;
@@ -213,4 +213,22 @@ input[type="radio"]:checked + label {
 
 .todoEdit .icon-x:hover {
     color: #fc816c;
+}
+
+.editTodoInputBg {
+    display: none;
+    position: fixed;
+    background: rgba(0,0,0,.4);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.editTodoInput {
+    background: #fafafa;
+    width: 360px;
+    padding: 0 20px 20px;
+    margin: 64px auto 0;
 }

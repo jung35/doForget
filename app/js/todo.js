@@ -9,7 +9,7 @@ $('.newTodo').on('click', function() {
 });
 
 function newTodo(form) {
-    var urgencyRadio = parseInt($('.newTodoInputRadio input[type="radio"]:checked').val()),
+    var urgencyRadio = parseInt($('.newTodoInput .todoInputRadio input[type="radio"]:checked').val()),
         title = form.title.value,
         extra = form.todoInputExtra.value,
         listSize = $('.doForgetList ul').length + 1,
@@ -62,7 +62,14 @@ function newTodo(form) {
         minute: 0,
         second: 0,
     }
+    $('.newTodoInput input[name="title"]').val('');
+    $('.newTodoInput textarea').val('');
+    $(this).html('Todo [+]');
+    $('.newTodoInput').slideUp(400);
+}
 
+function exitEditTodo() {
+    $('.editTodoInputBg').fadeOut('fast');
 }
 
 $('.doForgetList').on('click', '.doForgetTodo', function() {
@@ -93,6 +100,8 @@ $('.todoEditBg').on('click', function(evt) {
                     todos[which]['disabled'] = +new Date();
                     localStorage.setItem('todo', JSON.stringify(todos));
                     delete objTime[which];
+                } else {
+                    window.location = "";
                 }
             }
         } else if(targ.is('.icon-undo')) {
@@ -104,6 +113,8 @@ $('.todoEditBg').on('click', function(evt) {
                     delete todos[which]['disabled'];
                     localStorage.setItem('todo', JSON.stringify(todos));
                     objTime[which] = getTimePass(+new Date() - todos[which]['time']);
+                } else {
+                    window.location = "";
                 }
             }
         } else if(targ.is('.icon-x')) {
@@ -113,6 +124,21 @@ $('.todoEditBg').on('click', function(evt) {
                 if(todos[which] != undefined) {
                     delete todos[which];
                     localStorage.setItem('todo', JSON.stringify(todos));
+                } else {
+                    window.location = "";
+                }
+            }
+        } else if(targ.is('.icon-list')) {
+            if(localExists) {
+                var todos = JSON.parse(localStorage['todo']);
+                if(todos[which] != undefined) {
+                    $('.editTodoInputBg').fadeIn('slow');
+                    $('.editUrgency-'+todos[which]['urgency']).attr('checked','checked');
+                    $('.editTodoInput input[name="title"]').val(todos[which]['title']);
+                    $('.editTodoInput input[name="listId"]').val(which);
+                    $('.editTodoInput textarea').val(todos[which]['extra']);
+                } else {
+                    window.location = "";
                 }
             }
         }
@@ -122,3 +148,49 @@ $('.todoEditBg').on('click', function(evt) {
         $('.icon-undo').attr('class','icon-checkmark');
     });
 });
+
+function editTodo(form) {
+    var urgencyRadio = parseInt($('.editTodoInput .todoInputRadio input[type="radio"]:checked').val()),
+        title = form.title.value,
+        extra = form.todoInputExtra.value,
+        listId = form.listId.value,
+        urgency = 'low';
+
+    if(!(urgencyRadio >= 1 && urgencyRadio <= 3)) {
+        alert('Please select the urgency.');
+        exit;
+    } else if(title.length < 1) {
+        alert('The title is not long enough.');
+        exit;
+    } else if(extra.length > 132) {
+        alert('Please make the extra note shorter');
+        exit;
+    }
+
+    if(extra.length < 1) {extra = '';}
+
+    switch(urgencyRadio) {
+        case 2:
+            urgency = 'med';
+            break;
+        case 3:
+            urgency = 'high';
+            break;
+    }
+
+    if(localExists) {
+        var todos = JSON.parse(localStorage['todo']);
+
+        todos[listId]['title'] = title;
+        todos[listId]['extra'] = extra;
+        todos[listId]['urgency'] = urgency;
+        localStorage.setItem('todo', JSON.stringify(todos));
+    }
+    var listElement = $('#'+listId);
+
+    listElement.find('.message h4').html(title);
+    listElement.find('.message p').html(extra);
+    listElement.attr('class','doForgetTodo urgency-'+urgency);
+
+    $('.editTodoInputBg').fadeOut('fast');
+}

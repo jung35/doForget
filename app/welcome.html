@@ -18,7 +18,7 @@
         <h3 class="newTodo">Todo [+]</h3>
         <form class="newTodoInput">
 
-            <div class="newTodoInputRadio">
+            <div class="todoInputRadio">
                 <input type="radio" id="radioUrgencyLow" name="radioUrgency" value=1 checked>
                 <label for="radioUrgencyLow" title="Urgency : LOW"></label>
 
@@ -35,6 +35,32 @@
 
             <input type="button" onclick="newTodo(this.form);" value="Make New Todo">
         </form>
+
+        <div class="editTodoInputBg">
+            <form class="editTodoInput">
+                <h3>Edit Todo</h3>
+                <div class="todoInputRadio">
+                    <input type="radio" id="newRadioUrgencyLow" name="radioUrgency" class="editUrgency-low" value=1>
+                    <label for="newRadioUrgencyLow" title="Urgency : LOW"></label>
+
+                    <input type="radio" id="newRadioUrgencyMed" name="radioUrgency" class="editUrgency-med" value=2>
+                    <label for="newRadioUrgencyMed" title="Urgency : MEDIUM"></label>
+
+                    <input type="radio" id="newRadioUrgencyHigh" name="radioUrgency" class="editUrgency-high" value=3>
+
+                    <label for="newRadioUrgencyHigh" title="Urgency : HIGH"></label>
+                </div>
+
+                <input type="text" name="title" placeholder="Title">
+
+                <textarea name="todoInputExtra" placeholder="Extra Note (Optional)"></textarea>
+
+                <input type="hidden" name="listId">
+
+                <input type="button" onclick="editTodo(this.form);" value="Edit Todo">
+                <input type="button" class="cancel" onclick="exitEditTodo();" value="Cancel">
+            </form>
+        </div>
 
         <div class="doForgetList"></div>
         <div class="copyright">&copy; 2013 Jung Oh</div>

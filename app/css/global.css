@@ -66,6 +66,16 @@ input[type="button"] {
     font-size: 14px;
 }
 
-input[type="submit"]:hover {
+input[type="button"].cancel {
+    background: #fb7075;
+    margin: 10px 0 0 -1px;
+}
+
+input[type="submit"]:hover,
+input[type="button"]:hover {
     background: #81c844;
+}
+
+input[type="button"].cancel:hover {
+    background: #fa6065;
 }
