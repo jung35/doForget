@@ -64,7 +64,7 @@ function newTodo(form) {
     }
     $('.newTodoInput input[name="title"]').val('');
     $('.newTodoInput textarea').val('');
-    $(this).html('Todo [+]');
+    $('.newTodo').html('Todo [+]');
     $('.newTodoInput').slideUp(400);
 }
 
