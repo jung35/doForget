@@ -122,8 +122,10 @@ $('.todoEditBg').on('click', function(evt) {
             if(localExists) {
                 var todos = JSON.parse(localStorage['todo']);
                 if(todos[which] != undefined) {
-                    delete todos[which];
-                    localStorage.setItem('todo', JSON.stringify(todos));
+                    if (confirm('Are you sure you want to delete the Todo?')) {
+                        delete todos[which];
+                        localStorage.setItem('todo', JSON.stringify(todos));
+                    }
                 } else {
                     window.location = "";
                 }
