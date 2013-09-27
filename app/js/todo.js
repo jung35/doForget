@@ -118,16 +118,16 @@ $('.todoEditBg').on('click', function(evt) {
                 }
             }
         } else if(targ.is('.icon-x')) {
-            thisElement.remove();
-            if(localExists) {
-                var todos = JSON.parse(localStorage['todo']);
-                if(todos[which] != undefined) {
-                    if (confirm('Are you sure you want to delete the Todo?')) {
+            if(confirm('Are you sure you want to delete the Todo?')) {
+                thisElement.remove();
+                if(localExists) {
+                    var todos = JSON.parse(localStorage['todo']);
+                    if(todos[which] != undefined) {
                         delete todos[which];
                         localStorage.setItem('todo', JSON.stringify(todos));
+                    } else {
+                        window.location = "";
                     }
-                } else {
-                    window.location = "";
                 }
             }
         } else if(targ.is('.icon-list')) {
