@@ -5,6 +5,7 @@ html {
     background: #fafafa;
     color: #222;
     min-height: 100%;
+    position: relative;
 }
 
 body {
